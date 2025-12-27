@@ -122,6 +122,6 @@ FR-4 Size 1.2mm
 22.  If everything looks good, carefully de-solder the jumper wires and reassemble the case.
 
 ## 3D-printed case
-I'm sticking mine to a metal shelf, so here's a basic mounting adapter I made. You can press-fit 6mm x 2mm magnets into the bottom.
+I'm sticking mine to a metal shelf, so here's a basic mounting adapter I made. You can press-fit 6mm x 2mm magnets into the bottom. You can edit your own copy in [OnShape](https://cad.onshape.com/documents/636c24c67f252e54c99e1d59/w/d285826c2ada97c80f5e6059/e/6d59526af4b8823c3f3ca6f2?renderMode=0&uiState=694fe741e1ec829550ea3a75).
 
 <img src="/images/12_holder.png" width="400">
