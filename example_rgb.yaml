@@ -1,0 +1,73 @@
+esphome:
+  name: esphome-office-rgb
+  friendly_name: Office RGB LEDs
+
+bk72xx:
+  board: generic-bk7231n-qfn32-tuya
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "[your key here]"
+
+ota:
+  - platform: esphome
+    password: "[your password here]"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esphome-Office-Rgb"
+    password: "[password]"
+
+captive_portal:
+    
+# Configure for 4-wire RGB + Single Toggle Button
+output:
+  - platform: libretiny_pwm
+    id: output_blue
+    pin: GPIO07
+  - platform: libretiny_pwm
+    id: output_red
+    pin: GPIO08
+  - platform: libretiny_pwm
+    id: output_green
+    pin: GPIO24
+
+globals:
+  - id: action_state
+    type: int
+    restore_value: no
+    initial_value: '0'
+
+binary_sensor:
+  - platform: gpio
+    pin:   GPIO14
+    name: "Power Button"
+    filters:
+      - invert:
+      - delayed_on_off: 20ms
+    on_press:
+      light.toggle:  lightstrip1
+
+light:
+  - platform: rgb
+    red: output_red
+    green: output_green
+    blue: output_blue
+    name: "RGB LED Strip"
+    id: lightstrip1
+
+    # Ensure the light turns on by default if the physical switch is actuated.
+    restore_mode: ALWAYS_OFF
+
+text_sensor:
+  - platform: libretiny
+    version:
+      name: LibreTiny Version
