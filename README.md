@@ -33,7 +33,9 @@ FR-4 Size 1.2mm
    TP4 = TX
    TP5 = RX
    ```
+   
    <img src="/images/3_pcb.png" width="400">
+   
 4. Connect the jumper wires to a 3.3V FTDI cable as follows (remember that with FTDI cables, TX on one device must connect to RX on the other, and vice-versa):
    ```
    FTDI Cable     DLX-RGBCW
@@ -42,13 +44,18 @@ FR-4 Size 1.2mm
    TX   <------>  TP5 (RX)
    RX   <------>  TP4 (TX)
    ```
+   
    <img src="/images/4_ftdi.png" width="400">
+   
 5.  Download the [BK7231GUIFlashTool](https://github.com/openshwprojects/BK7231GUIFlashTool) and run it.
 6.  Check the box **"Automatically configure OBK on flash write"**. Click the "Change OBK settings for flash write" button and input your wifi SSID and password.
     * You can optionally provide your MQTT server and credentials here if you want to use the firmware as-is.
     * If you forget to do this step: after flashing is finished, join the broadcast SSID from your phone, then browse to 192.168.4.1 to configure the wifi credentials manually.
+   
    <img src="/images/5_checkobk.png" width="400">
+   
    <img src="/images/6_obksettings.png" width="400">
+   
 7.  Close the OBK settings window and run the flasher with the following settings:
 
     * Select UART port: (pick whatever shows up when you connect your FTDI cable)
@@ -62,11 +69,15 @@ FR-4 Size 1.2mm
     * Click "Backup and flash new"
     
 8.  Click **"Backup and flash new"**. When prompted for a name, you can leave it blank and click **OK**.
+
     <img src="/images/7_flashersettings.png" width="400">
-9.  When you see "Getting bus... (now, please do reboot by CEN or by power off/on)", carefully disconnect the 3V3 jumper from your FTDI cable and then reconnect it. (The reboots the device without resetting the serial connection.)
-10.  When finished, it'll display the pin assignments as reported by the stock firmware. Keep this info because it might come in handy later.
-    <img src="/images/8_gpioreport.png" width="400">
-11.  Disconnect the FTDI cable and connect the device to mains power to boot normally.
+    
+10.  When you see "Getting bus... (now, please do reboot by CEN or by power off/on)", carefully disconnect the 3V3 jumper from your FTDI cable and then reconnect it. (The reboots the device without resetting the serial connection.)
+11.  When finished, it'll display the pin assignments as reported by the stock firmware. Keep this info because it might come in handy later.
+
+     <img src="/images/8_gpioreport.png" width="400">
+     
+13.  Disconnect the FTDI cable and connect the device to mains power to boot normally.
 
 ## Replacing OpenBeken firmware with ESPHome
 (Tested with ESPHome 2025.12)
@@ -94,17 +105,23 @@ FR-4 Size 1.2mm
 10.  Click "Manual Download", then wait a few minutes for your ESPHome firmware to compile.
 11.  When the compilation is finished, click "Beken OTA Image". It'll download a file named [hostname]-ota.rbl.
     <img src="/images/9_download.png" width="400">
+    
 13.  Find this file in download folder and rename it to `OpenBK7231N_esphome.rbl`. (The OTA interface won't accept ESPHome firmware unless you rename it!)
 14.  Open a web browser and browse to the IP address of your device. (You may need to check the admin interface of your wifi network or router to find its IP address.)
 15.  Click "Launch Web Application".
+
      <img src="/images/10_webapp.png" width="400">
+     
 17.  Click the "OTA" tab.
 18.  Click Browse... and select OpenBK7231N_esphome.rbl from your downloads folder.
 19.  Click Start OTA.
+
      <img src="/images/11_ota.png" width="400">
+     
 21.  When finished, check to make sure it appears "online" in ESPHome, then add it to your Home Assistant instance.
 22.  If everything looks good, carefully de-solder the jumper wires and reassemble the case.
 
 ## 3D-printed case
 I'm sticking mine to a metal shelf, so here's a basic mounting adapter I made. You can press-fit 6mm x 2mm magnets into the bottom.
+
 <img src="/images/12_holder.png" width="400">
