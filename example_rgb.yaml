@@ -28,7 +28,7 @@ wifi:
 
 captive_portal:
     
-# Configure for 4-wire RGB + Single Toggle Button
+# Configure for 4-wire RGB + Toggle Button
 output:
   - platform: libretiny_pwm
     id: output_blue
