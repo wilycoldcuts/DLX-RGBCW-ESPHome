@@ -10,7 +10,7 @@ I'm replacing them with these ["Smart WiFi Controller"](https://www.aliexpress.c
 
 # Tuya Smart WiFi Controller
 I'm using two different variants: one with 4-wire RGB and one with a single-channel for controlling strips of white LEDs.
-
+![AliExpress product photo of the 4-wire variant.](/assets/images/1_4wire.png) ![AliExpress product photo of the single-channel variant.](/assets/images/2_singlechannel.png)
 After prying open the case with a flat spudger, both variants use the same PCB. Mine are silkscreened as follows:
 
 ```
@@ -40,15 +40,19 @@ FR-4 Size 1.2mm
    GND      <-> GND
    ```
 5.  Download the [BK7231GUIFlashTool](https://github.com/openshwprojects/BK7231GUIFlashTool) and run it.
-6.  Click the "Change OBK settings for flash write" button and input your wifi SSID and password. (You can optionally provide your MQTT server and credentials here if you want to use the firmware as-is).
-7.  Close the OBK settings window and run the flasher with the following settings:
+6.  Check the box **"Automatically configure OBK on flash write"**. Click the "Change OBK settings for flash write" button and input your wifi SSID and password.
+    * You can optionally provide your MQTT server and credentials here if you want to use the firmware as-is.
+    * If you forget to do this step: after flashing is finished, join the broadcast SSID from your phone, then browse to 192.168.4.1 to configure the wifi credentials manually.
+8.  Close the OBK settings window and run the flasher with the following settings:
     * Select UART port: _(pick whatever shows up when you connect your FTDI cable)_
     * Select chip type: **BK7231N**
     * Select firmware: (Click **"Download latest from Web"**)
-    * Set baud rate: _(The default should be fine)_
-    * Click **"Do backup and flash new"**
-8.  When finished, it'll display the pin assignments as reported by the stock firmware. Keep this info because it might come in handy later.
-9.  Disconnect the FTDI cable and connect the device to mains power to boot normally.
+    * Set baud rate: **230400**
+    * Click **"Backup and flash new"**
+9.  Click **"Backup and flash new"**. When prompted for a name, you can leave it blank and click **OK**.
+10.  When you see "Getting bus... (now, please do reboot by CEN or by power off/on)", carefully disconnect the 3V3 jumper from your FTDI cable and then reconnect it. (The reboots the device without resetting the serial connection.)
+11.  When finished, it'll display the pin assignments as reported by the stock firmware. Keep this info because it might come in handy later.
+12.  Disconnect the FTDI cable and connect the device to mains power to boot normally.
 
 ## Replacing OpenBeken firmware with ESPHome
 (Tested with ESPHome 2025.12)
