@@ -22,7 +22,7 @@ FR-4 Size 1.2mm
 ```
 
 ## Replacing the stock Tuya firmware with OpenBeken
-[OpenBK7231T/OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App) is a project to provide a Tasmota-like alternative firmware for Tuya-based devices like these. They build upon the great work of the Cloudcutter project, although I couldn't Cloudcutter to work because these specific Tuya devices may have been patched. That's okay though - it's pretty easy to flash these manually:
+[OpenBK7231T/OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App) is a project to provide a Tasmota-like alternative firmware for Tuya-based devices like these. They build upon the great work of the [Cloudcutter](https://github.com/tuya-cloudcutter/tuya-cloudcutter) project, although I couldn't get Cloudcutter to work because these specific Tuya devices may have been patched. That's okay though - it's pretty easy to flash these manually:
 
 1. Open the device by removing the bottom cover with a spudger or flat shim.
 2. Carefully remove the PCB and turn it over.
